@@ -147,6 +147,9 @@ class Class(db.Model):
     dancestyles = db.relationship('DanceStyle',
                                   backref='Class')
 
+    school = db.relationship('School',
+                             backref = 'Class')
+
 
 
     def __repr__(self):
@@ -178,8 +181,7 @@ class School(db.Model):
                                backref = 'schools')
 
 
-    classes = db.relationship('Class',
-                             backref = 'School')
+    
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -215,38 +217,6 @@ class Teacher(db.Model):
         teacher_name={self.teacher_name}>\n"""
 
 
-
-
-#########################
-
-# class TeacherClass(db.Model):
-#     """Data model for TeacherClass."""
-
-#     __tablename__ = 'teacher_classes'
-
-#     teacher_class_id = db.Column(db.Integer,
-#                        autoincrement=True,
-#                        primary_key=True)
-
-#     teacher_id = db.Column(db.Integer, 
-#                            db.ForeignKey('teachers.teacher_id'),                             nullable=False)
-
-#     dance_class_id = db.Column(db.Integer, 
-#                                db.ForeignKey('dance_classes.dance_class_id'),  nullable=False)
-
-
-#     def __repr__(self):
-#         """Provide helpful representation when printed."""
-
-#         return f"""
-#         <TeacherClass teacher_class_id={self.teacher_class_id} 
-#         teacher_id={self.teacher_id} 
-#         dance_class_id={self.dance_class_id}>"""
-
-    
-
-
-
 class TeacherSchool(db.Model):
     """Data model for TeacherSchool."""
 
@@ -276,6 +246,34 @@ class TeacherSchool(db.Model):
 
 
 
+
+#########################
+
+# class TeacherClass(db.Model):
+#     """Data model for TeacherClass."""
+
+#     __tablename__ = 'teacher_classes'
+
+#     teacher_class_id = db.Column(db.Integer,
+#                        autoincrement=True,
+#                        primary_key=True)
+
+#     teacher_id = db.Column(db.Integer, 
+#                            db.ForeignKey('teachers.teacher_id'),                             nullable=False)
+
+#     dance_class_id = db.Column(db.Integer, 
+#                                db.ForeignKey('dance_classes.dance_class_id'),  nullable=False)
+
+
+#     def __repr__(self):
+#         """Provide helpful representation when printed."""
+
+#         return f"""
+#         <TeacherClass teacher_class_id={self.teacher_class_id} 
+#         teacher_id={self.teacher_id} 
+#         dance_class_id={self.dance_class_id}>"""
+
+    
 
 
 
