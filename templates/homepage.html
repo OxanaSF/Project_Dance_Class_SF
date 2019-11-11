@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %}Dance Classes in San Francisco | Dance Search Engine in San Francisco{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    
+    <style>
+    body{
+    margin: 0 auto;
+    padding: 0;
+    background-image: url("/static/san_francisco2.png");
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+    </style>
+    {% endblock %}
+        
+    
+   
+    {% block content %}
+
+
+<nav>
+    <section class="class"nav-container>
+        <aside class="menu">
+            <div class="menu-content">
+                <a href="#" id="login">Login</a> | <a href="#">Register</a>
+            </div>
+        <div class="arrow-up"></div>
+        </aside>
+    <div class="login-form">
+
+        <form>
+            <div>
+                <label>email</label>
+                <input type="text" placeholder="email" required/>
+            </div>
+            <div>
+                <label>password</label>
+                <input type="password" placeholder="password" required/>
+            </div>
+            <div>
+                <input type="submit" value="log in"/>
+            </div>
+            <!-- <div>
+                <label>Remember Me</label>
+                <input type="checkbox" name="remember_me" class="form-control">
+            </div> -->
+            <div>
+                <a href="#" style="text-decoration: none; position: relative; top: 15px"></a>forgot your password?</a>
+            </div>
+        </form>
+    </div>
+    </section>
+    
+</nav>
+
+    
+<div class="header" id="header">
+    <form>
+        <h1 id="find_dance">  
+            Find Your 
+            
+            <span style='color: blue'>D</span>
+            <span style='color: red'>A</span>
+            <span style='color: yellow'>N</span>
+            <span style='color: blue'>C</span>
+            <span style='color: green'>E</span>
+            
+            Class<br> in San Francisco
+        </h1>
+
+<div class="form-box" id="form-box">
+            <input type="text" class="search-field dance_style" id="search-field dance_style"
+            placeholder="Dance Style">
+                    
+            <!-- 
+            <input type="text" class="search-field zip_code"
+            placeholder="Zip Code"> 
+            -->
+
+            <button type="button" class="search-btn" id="search-btn">Search</button>         
+</div>
+        
+    </form>
+</div>
+
+        
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+	
+<script src="static/index.js" charset="utf8"></script>
+        
+    {% endblock %}
+
