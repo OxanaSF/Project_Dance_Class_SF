@@ -4,6 +4,10 @@ from model import db, User, Bookmark, Rating, DanceStyle, Class, School, Teacher
 
 
 
+def dance_style_dance_school_dance_teacher():
+    """returns """
+
+
 def classes_school():
     """Returns class and school where the class it tought"""
     class_school = db.session.query(Class.name,
@@ -53,7 +57,7 @@ def print_classes_by_dance_style(dance_style):
     display_dict = {}
 
     for class_el in classes_result:
-        dance_style = class_el.dancestyles.name
+        dance_style = class_el.dancestyle.name
         dance_class = class_el.name
     
        
@@ -65,6 +69,10 @@ def print_classes_by_dance_style(dance_style):
     return display_dict
 
    
+def classes_by_dance_style_with_school(dance_style):
+    classes_result = (db.session.query(Class).join(DanceStyle).join(School).filter(DanceStyle.name == dance_style).all())
+    return classes_result
+
 def print_classes_by_dance_style_with_school(dance_style):
     """takes dance style as a parameter and returns the name of the style with the list of classes of that style and the name of the school where the class id thought"""
 
@@ -73,7 +81,7 @@ def print_classes_by_dance_style_with_school(dance_style):
     display_dict = {}
 
     for class_el in classes_result:
-        dance_style = class_el.dancestyles.name
+        dance_style = class_el.dancestyle.name
         dance_class = class_el.name
         school = class_el.school.name
     
@@ -103,7 +111,7 @@ def print_classes_by_dance_style_and_school(dance_style, school_name):
 
     
   
-    
+ 
     
 
 

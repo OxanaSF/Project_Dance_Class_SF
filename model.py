@@ -19,10 +19,13 @@ class User(db.Model):
     email = db.Column(db.String(100), nullable=False)
    
     password_hash = db.Column(db.String(128))
+    name = db.Column(db.String(50), nullable=False)
+    birth_date = db.Column(db.DateTime)
 
     bookmarked_classes = db.relationship('Class',
                                          secondary='bookmarks',
                                          backref='bookmarked_by')
+    
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -116,6 +119,9 @@ class DanceStyle(db.Model):
     
     name = db.Column(db.String(200))
 
+    dancestyle = db.relationship('Class',
+                                  backref='dancestyles')
+
     def __repr__(self):
         """Provide helpful representation when printed."""
 
@@ -155,11 +161,11 @@ class Class(db.Model):
     # bookmarked_by -> list of User objects who bookmarked this class
 
 
-    dancestyles = db.relationship('DanceStyle',
-                                  backref='Class')
+    
 
     school = db.relationship('School',
-                             backref = 'Class')
+                             backref='classes')
+    # teacher: Teacher that teaches this class
 
 
 
@@ -186,6 +192,11 @@ class School(db.Model):
 
     name = db.Column(db.String(100), nullable=False)
     address = db.Column(db.String(200), nullable=True)
+    website = db.Column(db.String(200), nullable=True)
+    district = db.Column(db.String(200), nullable=True)
+    phone = db.Column(db.String(200), nullable=True)
+
+
 
     teachers = db.relationship('Teacher',
                                secondary = 'teacher_schools',
@@ -217,7 +228,7 @@ class Teacher(db.Model):
     teacher_name = db.Column(db.String(50), nullable=False)
 
     classes = db.relationship('Class',
-                              backref = 'teachers')
+                              backref = 'teacher')
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -234,14 +245,15 @@ class TeacherSchool(db.Model):
     __tablename__ = 'teacher_schools'
 
     teacher_school_id = db.Column(db.Integer,
-                       autoincrement=True,
-                       primary_key=True)
+                        autoincrement=True,
+                        primary_key=True)
 
     teacher_id = db.Column(db.Integer, 
-                          db.ForeignKey('teachers.teacher_id'), 
-                          nullable=False)
+                        db.ForeignKey('teachers.teacher_id'), 
+                        nullable=False)
     school_id = db.Column(db.Integer, 
-                               db.ForeignKey('schools.school_id'),             nullable=False)
+                        db.ForeignKey('schools.school_id'),
+                        nullable=False)
 
 
     

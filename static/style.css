@@ -54,6 +54,8 @@ nav{
     top: 47px;
     display: none;
 }
+
+
 .login-form{
     position: absolute;
     width: 300px;
@@ -70,6 +72,9 @@ nav{
     display: none;
 }
 
+
+
+
 .login-form>form{
     width: 250;
     margin: 35px;
@@ -79,6 +84,8 @@ nav{
     color: dimgrey
  
 }
+
+
 
 input[type="text"],
 input[type="password"]{
@@ -117,19 +124,21 @@ input[type="submit"]{
 }
 
 
-.search-field{
-    height: 10px;
+   .option_btw_style_school{
+    height: 40px;
     padding: 20px;
     margin: 0 auto;
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     outline: none;
     text-align: center;
     font-size: 20px;
     align-items: center;
     background: rgb(217, 211, 224);
      
-}
+} 
+
+
 
 .dance_style{
    width: 200px; 
@@ -155,9 +164,25 @@ input[type="submit"]{
 
 
 .form-box{
-    background: rgba(0,0,0,0.5);
-    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    padding: 60px;
     border-radius: 25px;
     align-items: center;
+    height: 150px;
+    width: 400px;
+    justify-content: center;
     
+    
+}
+
+#sel1{
+    background: rgba(0,0,0,0.2);
+    padding: 60px;
+    margin: 10px;
+    border-radius: 25px;
+    align-items: center;
+    height: 40px;
+    width: 200px;
+   
+
 }
