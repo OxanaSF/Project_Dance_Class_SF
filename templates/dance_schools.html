@@ -25,7 +25,7 @@
         <ul>
             {% for school in dance_schools %}
             <li>
-                <a class="dance_school" href="/dance_school/{{ school.school_id }}" data-address="{{ school.address }}">
+                <a class="dance_school" href="/dance_school/{{ school.school_id }}" data-address="{{ school.address }}" data-name="{{ school.name }}">
                     {{ school.name }}</br>
                     {{ school.district }}
                 </a>
