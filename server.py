@@ -63,8 +63,9 @@ def register_process():
 @app.route('/login', methods=['GET'])
 def login_form():
     """login for registered users."""
-    
+
     return render_template("login_form.html")
+
 
 # route 5
 @app.route('/login', methods=['POST'])
@@ -114,15 +115,10 @@ def show_school(school_id):
 
     dance_school = School.query.get(school_id)
 
-    dance_class = dance_school.classes
-
-    dance_teacher = dance_school.teachers
-
     # print(dance_school.classes)
     # print(dance_school.teachers)
 
-    return render_template('dance_school.html', dance_school=dance_school, dance_class=dance_class, dance_teacher=dance_teacher)
-
+    return render_template('dance_school.html', dance_school=dance_school)
 
 
 # route 9
@@ -131,7 +127,6 @@ def show_dance_styles():
     """Shows dance_styles"""
 
     dance_styles = DanceStyle.query.all()
-
 
     return render_template('dance_styles.html',
                            dance_styles=dance_styles)
@@ -143,16 +138,20 @@ def show_classes_based_on_style(dance_id):
     dance_style = DanceStyle.query.get(dance_id)
 
     dance_classes = dance_style.dancestyle
-   
 
-    return render_template('dance_style.html', dance_style=dance_style, dance_classes=dance_classes)
-    
+    # teachers = []
+    # for class_ in dance_classes:
+    #     teachers.append(class_.teacher)
+    # print(teachers)
+
+    return render_template('dance_style.html', dance_style=dance_style, dance_classes=dance_classes
+                           )
 
 
 # route 11
 @app.route('/dance_classes')
 def show_dance_classes():
-    """Shows dance styles options"""
+    """Shows dance classes"""
 
     dance_classes = Class.query.all()
 
@@ -161,7 +160,7 @@ def show_dance_classes():
 
 
 # route 12
-@app.route('/dance_classes/<class_id>')
+@app.route('/dance_class/<class_id>')
 def show_particular_class(class_id):
 
     dance_class = Class.query.get(class_id)
@@ -170,63 +169,33 @@ def show_particular_class(class_id):
 
     # dance_teacher = dance_school.classes
 
-
     return render_template('dance_class.html', dance_class=dance_class)
 
 
+
 # route 13
-@app.route('/search')
-def search():
-    """Dance search page."""
+@app.route('/dance_teachers')
+def show_dance_teachers():
+    """Shows dance teachers"""
 
-    # Get value from query parameter "style" from URL
-    # Example query parameter with value:
-    # ?<param>=<value>
-    dance_style = request.args.get('dance_style')
+    dance_teachers = Teacher.query.all()
 
-    dance_school = request.args.get('dance_school')
+    return render_template('dance_teachers.html',
+                           dance_teachers=dance_teachers)
 
-    dance_teacher = request.args.get('dance_teacher')
+# route 14
+@app.route('/dance_teacher/<teacher_id>')
+def show_teacher_info(teacher_id):
 
-    # from more options to less 
-    if dance_style and dance_school and dance_teacher:
-        result = 'a'
-
-    elif dance_style and dance_school:
-        result = 'b'
+    teacher = Teacher.query.get(teacher_id)
+    dance_classes = teacher.classes
+    
 
 
-    elif dance_style and dance_teacher:
-        result = 'c'
+    return render_template('dance_teacher.html', teacher=teacher, dance_classes=dance_classes)
 
 
-    elif dance_school and dance_teacher:
-        result = 'd'
-
-
-    elif dance_style:
-        result = Class.query.filter(Class.name.like(f"%{dance_style}%")).all()
-
-
-    elif dance_school:
-        if dance_school == 'All Schools':
-            result = School.query.all()
-        else:
-            result = School.query.filter_by(name=dance_school).all()
-
-
-    elif dance_teacher:
-        if dance_teacher == 'All Teachers':
-            result = Teacher.query.all()
-        else:
-            result = Teacher.query.filter_by(teacher_name=dance_teacher).all()
-
-   
-
-    return render_template("search.html", results=result)
-
-
-# #route 13
+# #route 15
 @app.route('/logout')
 def logout():
     """Log out."""

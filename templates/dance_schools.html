@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Dance Schools{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="/static/dance_style.css"> -->
+
+{% endblock %}
+
+{% block content %}
+
+<header>
+    <h1>Dance Schools of San Francisco</h1>
+</header>
+
+<main>
+    <section class="dance_school_list">
+        <ul>
+            {% for school in dance_schools %}
+            <li>
+                <a class="dance_school" href="/dance_school/{{ school.school_id }}" data-address="{{ school.address }}">
+                    {{ school.name }}</br>
+                    {{ school.district }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section class="map">
+        <div id="map"></div>
+    </section>
+
+
+
+
+</main>
+
+
+
+<script src="static/map.js" charset="utf8"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi7U3Bs7RTVtksiP6UEgzyFzXZIuohYEo&callback=initMap" async
+    defer></script>
+{% endblock %}

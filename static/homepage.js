@@ -24,6 +24,10 @@ $(document).ready(function(){
         if(selectedCOption == 'Dance style'){
             window.location.href='/dance_styles'
             // alert("You have selected - " + 'Dance style');
+
+        } else if (selectedCOption == 'Dance teacher') {
+            window.location.href='/dance_teachers'
+        
         }else{
             window.location.href='/dance_schools'
             // alert("You have selected - " + 'Dance school');

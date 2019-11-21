@@ -122,6 +122,7 @@ class DanceStyle(db.Model):
     dancestyle = db.relationship('Class',
                                   backref='dancestyles')
 
+    # name as classes
     def __repr__(self):
         """Provide helpful representation when printed."""
 
@@ -156,6 +157,10 @@ class Class(db.Model):
                 
     
     name = db.Column(db.String(100))
+    discription = db.Column(db.String(500),
+                        nullable=True)
+    schedule = db.Column(db.String(100),
+                        nullable=True)
     
 
     # bookmarked_by -> list of User objects who bookmarked this class
@@ -166,6 +171,8 @@ class Class(db.Model):
     school = db.relationship('School',
                              backref='classes')
     # teacher: Teacher that teaches this class
+
+    
 
 
 
@@ -226,6 +233,8 @@ class Teacher(db.Model):
                        autoincrement=True,
                        primary_key=True)
     teacher_name = db.Column(db.String(50), nullable=False)
+    bio = db.Column(db.String(500), nullable=True)
+    photo = db.Column(db.String(500), nullable=True) 
 
     classes = db.relationship('Class',
                               backref = 'teacher')
