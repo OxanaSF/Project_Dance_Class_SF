@@ -22,7 +22,7 @@
 
 {% block content %}
 
-
+<h4>{{ today }}</h4>    
 <nav>
     <section class="class" nav-container>
         <aside class="menu">
@@ -37,14 +37,15 @@
 
         <div class="login-form">
 
-            <form>
+            <form action="/loggedin" method="POST">
+          
                 <div>
                     <label>email</label>
-                    <input type="text" placeholder="email" required />
+                    <input type="text" placeholder="email" name='email' required />
                 </div>
                 <div>
                     <label>password</label>
-                    <input type="password" placeholder="password" required />
+                    <input type="password" placeholder="password" name='password' required />
                 </div>
                 <div>
                     <input type="submit" value="log in" />

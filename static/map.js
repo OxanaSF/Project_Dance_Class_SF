@@ -43,7 +43,7 @@ function initMap() {
         
     });
 
-
+    console.log(schoolAddresses);
     const geocoder = new google.maps.Geocoder();
     for (const addrSchool of schoolAddresses) {
         geocoder.geocode(

@@ -7,6 +7,8 @@ from jinja2 import StrictUndefined
 from model import connect_to_db, db, User, Bookmark, Rating, DanceStyle, Class, School, Teacher, TeacherSchool
 
 from query_test import find_classes_by_dance_style
+from datetime import date, datetime, timezone
+
 
 
 app = Flask(__name__)
@@ -19,8 +21,10 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def homepage():
     """Displays homepage and sign-in/login info."""
+    today = datetime.today().strftime("%b %d %Y")
+  
 
-    return render_template("homepage.html")
+    return render_template("homepage.html", today=today)
 
 
 # route 2
@@ -49,26 +53,26 @@ def register_process():
         name = request.form.get("name")
         birthday = request.form.get("birthday")
 
-        new_user = User(email=email, password_hash=password,
+        new_user = User(email=email,        password_hash=password,
                         name=name, birth_date=birthday)
         db.session.add(new_user)
         db.session.commit()
 
-        flash(f"User {email} added.")
+        flash(f"User {name} added.")
 
-        return redirect(f"/welcome/{new_user.user_id}")
+        return redirect(f"/users/{new_user.user_id}")
 
 
 # route 4
 @app.route('/login', methods=['GET'])
 def login_form():
-    """login for registered users."""
+    """Show login form."""
 
     return render_template("login_form.html")
 
 
 # route 5
-@app.route('/login', methods=['POST'])
+@app.route('/loggedin', methods=['POST'])
 def login_process():
     """Process login."""
 
@@ -76,6 +80,7 @@ def login_process():
     password = request.form.get("password")
 
     user = User.query.filter_by(email=email).first()
+    # user = User.query.filter(User.email == email, User.password_hash == password).one()
 
     if not user:
         flash("Your login is invalid. Please try again.")
@@ -88,18 +93,34 @@ def login_process():
     session["user_id"] = user.user_id
 
     flash("Logged in")
-    return redirect(f"/welcome/{user.user_id}")
-
+    return redirect(f"/users/{user.user_id}")
 
 # route 6
-@app.route("/welcome/<int:user_id>")
+@app.route('/logout')
+def logout():
+    """Log out."""
+
+    del session["user_id"]
+    flash("Logged Out.")
+    return redirect("/")
+
+# route 7
+@app.route("/users")
+def user_list():
+    """Show list of users."""
+
+    users = User.query.all()
+    return render_template("user_list.html", users=users)
+
+# route 8
+@app.route("/users/<int:user_id>")
 def user_detail(user_id):
     """Show info about user."""
 
-    user = User.query.filter_by(user_id=user_id).first()
-    return render_template('welcome.html', user=user)
+    user = User.query.get(user_id)
+    return render_template('user.html', user=user)
 
-# route 7
+# route 9
 @app.route('/dance_schools')
 def show_schools():
     """Shows dance styles options"""
@@ -109,11 +130,13 @@ def show_schools():
     return render_template('dance_schools.html',
                            dance_schools=dance_schools)
 
-# route 8
+# route 10
 @app.route('/dance_school/<school_id>')
 def show_school(school_id):
 
     dance_school = School.query.get(school_id)
+
+
 
     # print(dance_school.classes)
     # print(dance_school.teachers)
@@ -121,7 +144,7 @@ def show_school(school_id):
     return render_template('dance_school.html', dance_school=dance_school)
 
 
-# route 9
+# route 11
 @app.route('/dance_styles')
 def show_dance_styles():
     """Shows dance_styles"""
@@ -131,7 +154,7 @@ def show_dance_styles():
     return render_template('dance_styles.html',
                            dance_styles=dance_styles)
 
-# route 10
+# route 12
 @app.route('/dance_style/<dance_id>')
 def show_classes_based_on_style(dance_id):
 
@@ -148,7 +171,7 @@ def show_classes_based_on_style(dance_id):
                            )
 
 
-# route 11
+# route 13
 @app.route('/dance_classes')
 def show_dance_classes():
     """Shows dance classes"""
@@ -159,7 +182,7 @@ def show_dance_classes():
                            dance_classes=dance_classes)
 
 
-# route 12
+# route 14
 @app.route('/dance_class/<class_id>')
 def show_particular_class(class_id):
 
@@ -173,7 +196,7 @@ def show_particular_class(class_id):
 
 
 
-# route 13
+# route 15
 @app.route('/dance_teachers')
 def show_dance_teachers():
     """Shows dance teachers"""
@@ -183,26 +206,52 @@ def show_dance_teachers():
     return render_template('dance_teachers.html',
                            dance_teachers=dance_teachers)
 
-# route 14
-@app.route('/dance_teacher/<teacher_id>')
+# route 16
+@app.route("/dance_teachers/<int:teacher_id>", methods=['GET'])
 def show_teacher_info(teacher_id):
+    """Show info about teacher. If a user is logged in, let them add/edit a rating.
+    """
 
     teacher = Teacher.query.get(teacher_id)
+
     dance_classes = teacher.classes
-    
+
+    user_id = session.get("user_id")
+
+    if user_id:
+        user_rating = Rating.query.filter_by(teacher_id=teacher_id, 
+                                            user_id=user_id).first()
+    else:
+        user_rating = None
 
 
-    return render_template('dance_teacher.html', teacher=teacher, dance_classes=dance_classes)
+    return render_template('dance_teacher.html', teacher=teacher,                                             dance_classes=dance_classes, user_rating=user_rating)
 
+# route 17
+@app.route("/dance_teachers/<int:teacher_id>", methods=['POST'])
+def teacher_detail_process(teacher_id):
+    """Add/edit a rating."""
 
-# #route 15
-@app.route('/logout')
-def logout():
-    """Log out."""
+    score = int(request.form["score"])
+    user_id = session.get("user_id")
+    if not user_id:
+        raise Exception("No user logged in.")
 
-    del session["user_id"]
-    flash("Logged Out.")
-    return redirect("/")
+    rating = Rating.query.filter_by(user_id=user_id, teacher_id=teacher_id).first()
+
+    if rating:
+        rating.score = score
+        flash("Rating updated.")
+
+    else:
+        rating = Rating(user_id=user_id, teacher_id=teacher_id, score=score)
+        flash("Rating added.")
+        db.session.add(rating)
+
+    db.session.commit()
+
+    return redirect(f"/dance_teachers/{teacher_id}")
+
 
 
 if __name__ == "__main__":

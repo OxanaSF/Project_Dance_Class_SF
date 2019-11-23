@@ -88,12 +88,16 @@ class Rating(db.Model):
     user_id = db.Column(db.Integer,
                         db.ForeignKey('users.user_id'),
                         nullable=False)
-    class_id = db.Column(db.Integer,
-                               db.ForeignKey('classes.class_id'), 
+ 
+
+    teacher_id = db.Column(db.Integer,
+                               db.ForeignKey('teachers.teacher_id'), 
                                nullable=False)
 
-    user = db.relationship('User', backref='ratings')
-    dance_class = db.relationship('Class', backref='ratings')
+    user = db.relationship('User', 
+                        backref='ratings')
+                                
+    teacher = db.relationship('Teacher', backref='ratings')
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -103,7 +107,7 @@ class Rating(db.Model):
         rating_id={self.rating_id} 
         score={self.score} 
         user_id={self.user_id} 
-        class_id={self.class_id}>"""
+        teacher_id={self.teacher_id}>"""
 
 
 

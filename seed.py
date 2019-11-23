@@ -65,8 +65,8 @@ def load_teachers_from_the_pull():
 
 
 #5 Additionally could be photo or/and bio
-def load_teacher_by_name(name):
-    teacher = Teacher(teacher_name=name)
+def load_teacher_by_name(name, bio, photo):
+    teacher = Teacher(teacher_name=name, bio=bio, photo=photo)
     db.session.add(teacher)
     db.session.commit()
 

@@ -14,7 +14,6 @@
 //     window.location.href='/dance_styles'
 // })
 
-   
 
 $(document).ready(function(){
     $("select.option_btw_style_school").change(function(){
