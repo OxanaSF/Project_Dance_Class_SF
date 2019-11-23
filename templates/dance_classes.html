@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Dance Classes{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+   #map{
+       height: 400px;
+       width: 100%;
+   } 
+</style>
+
+<!-- <link rel="stylesheet" type="text/css" href="/static/dance_style.css"> -->
+{% endblock %}
+
+{% block content %}
+<h1>Dance Classes</h1>
+
+<ul>
+    {% for class in dance_classes %}
+    <li>
+        <a href="/dance_class/{{ class.class_id }}">{{ class.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<h1>Google Map</h1>
+<main>
+        <section class="map">
+          <div id="map"></div>
+        </section>
+</main>
+
+
+<script>
+        function initMap(){
+            const options = {
+                zoom: 10,
+                center: {lat: 37.601773, lng: -122.202870}
+            }
+            const map = new google.maps.Map(document.getElementById('map'), options);
+        }
+    
+    
+    </script>
+
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+<script src="static/dance_style.js" charset="utf8"></script> -->
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi7U3Bs7RTVtksiP6UEgzyFzXZIuohYEo&callback=initMap" async
+    defer></script>
+
+
+{% endblock %}

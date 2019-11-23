@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Dance Teachers{% endblock %}
+<!-- 
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="/static/dance_style.css">
+{% endblock %} -->
+
+{% block content %}
+<h1>Dance Teachers</h1>
+
+<ul>
+    {% for teacher in dance_teachers %}
+        <li>
+            <a href="/dance_teachers/{{ teacher.teacher_id }}">{{ teacher.teacher_name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+<!-- <script src="static/dance_style.js" charset="utf8"></script> -->
+{% endblock %}

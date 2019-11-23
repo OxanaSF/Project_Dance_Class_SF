@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}welcome{% endblock %}
+
+{% block content %}
+
+<h5>Welcome, {{ user.name }}!</h5>
+<br>
+<h6>email: {{ user.email }}</h6>
+<h6>birthday: {{ user.birth_date.strftime('%b %d %Y') }}</h6>
+<br>
+<h4>Ratings</h4>
+
+<ul>
+    {% for rating in user.ratings %}
+    <li>
+        <a href="/teachers/{{ rating.teacher_id }}">{{ rating.teacher.teacher_name }}</a>
+        was rated {{ rating.score }}
+    </li>
+    {% endfor %}
+</ul>
+
+
+
+
+
+
+
+{% endblock %}

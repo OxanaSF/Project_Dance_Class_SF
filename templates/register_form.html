@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Register Form{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+
+<link rel="stylesheet" type="text/css" href="/static/style_register_form.css">
+
+{% endblock %}
+
+
+{% block content %}
+
+<div>
+  <h3>Create an Account</h3>
+</div>
+<div>
+  <form action="/register" method="POST" class="wellspaced">
+
+    <div class="form-group">
+      <label>
+        Name:
+        <input type="text" name="name" class="form-control">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>
+        Email:
+        <input type="email" name="email" class="form-control">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>
+        Password:
+        <input type="password" name="password" class="form-control">
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        Birthday:
+        <input type="date" name="birthday" class="form-control">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <input type="submit" value="Register" class="submit_register" id="submit_reg_form">
+    </div>
+
+  </form>
+</div>
+{% endblock %}

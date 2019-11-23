@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Dance search | Dance Search Engine in San Francisco{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+<link rel="stylesheet" type="text/css" href="/static/style_search.css">
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<h4>All {{ dance_style.name }} classes</h4>
+</br>
+<div>
+    {% for class in dance_classes %}
+    <h5>class: <a href="/dance_class/{{ class.class_id }}">{{ class.name }}</a></h5>
+    <h5>when: {{ class.schedule }}</h5>
+    <h5> at: <a href="/dance_school/{{ class.school_id }}">{{ class.school.name }}</a></h5>
+    <h5> tought by: <a href="/dance_teacher/{{ class.teacher_id }}">{{ class.teacher.teacher_name }}</a></h5>
+    
+</br>
+    {% endfor %}
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+        <script src="static/homepage.js" charset="utf8"></script>
+        {% endblock %}
