@@ -58,7 +58,9 @@ def load_teachers_from_the_pull():
         for row in reader:
             # print(row[1], row[2], row[3], row[4])
             teacher = Teacher(teacher_id=row[0],
-                              teacher_name=row[1])
+                              photo=row[1],
+                              teacher_name=row[2],
+                              bio=row[3])
 
             db.session.add(teacher)
     # db.session.commit()

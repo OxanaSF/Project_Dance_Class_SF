@@ -162,11 +162,6 @@ def show_classes_based_on_style(dance_id):
 
     dance_classes = dance_style.dancestyle
 
-    # teachers = []
-    # for class_ in dance_classes:
-    #     teachers.append(class_.teacher)
-    # print(teachers)
-
     return render_template('dance_style.html', dance_style=dance_style, dance_classes=dance_classes
                            )
 
@@ -251,6 +246,85 @@ def teacher_detail_process(teacher_id):
     db.session.commit()
 
     return redirect(f"/dance_teachers/{teacher_id}")
+
+
+# route 18
+@app.route('/add_school', methods=['GET'])
+def add__new_school():
+    """Show form for user to add a school"""
+
+    return render_template("add_school.html")
+
+
+# route 19
+@app.route('/add_school', methods=['POST'])
+def add_school_process():
+    """Process adding new school."""
+
+    
+    name = request.form.get("name")
+    address = request.form.get("address")
+    website = request.form.get("website")
+    district = request.form.get("district")
+    phone = request.form.get("phone")
+
+    new_school = School(name=name,                                  address=address,
+                        website=website, district=district,
+                        phone=phone)
+
+    db.session.add(new_school)
+    db.session.commit()
+
+    flash(f"School {name} added.")
+
+    return redirect(f"/dance_school/{new_school.school_id}")
+
+
+# route 20
+@app.route('/update_school/<int:school_id>', methods=['GET'])
+def update_school(school_id):
+    """Show form for user to update a school"""
+    
+    return render_template("update_school.html",
+                            sch_id=school_id)
+
+
+# route 21
+@app.route('/update_school/<int:school_id>', methods=['POST'])
+def update_school_process(school_id):
+    """Process updating school info."""
+ 
+    school = School.query.get(school_id)
+
+    new_name = request.form.get("name")
+    new_address = request.form.get("address")
+    new_website = request.form.get("website")
+    new_district = request.form.get("district")
+    new_phone = request.form.get("phone")
+
+    if new_name:
+        school.name =  new_name
+        flash(f"Name of {school.name} was updated to {new_name}.")
+
+    if new_address:
+        school.address =  new_address
+        flash(f"Address of {school.name} was updated.")
+      
+    if new_website:
+        school.website =  new_website
+        flash(f"Website name of {school.name} was updated.")
+       
+    if new_district:
+        school.district =  new_district
+        flash(f"District name of {school.name} was updated.")
+     
+    if new_phone:
+        school.phone =  new_phone
+        flash(f"Phone number of {school.name} was updated.")
+      
+    db.session.commit()
+
+    return redirect(f"/dance_school/{school_id}")
 
 
 

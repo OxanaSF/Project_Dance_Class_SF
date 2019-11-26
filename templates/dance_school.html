@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Dance search | Dance Search Engine in San Francisco{% endblock %}
+{% block title %}Dance school{% endblock %}
 
 {% block head %}
 {{ super() }}
 
 <link rel="stylesheet" type="text/css" href="/static/style_search.css">
+
 
 {% endblock %}
 
@@ -12,19 +13,26 @@
 
 {% block content %}
 
-
+<main>
 <h4>school: {{ dance_school.name }}</h4>
 </br>
 <h5>address: {{ dance_school.address }}</h5>
-<h5>website: <a href="https://www.{{ dance_school.website }}/">www.odc.dance</a></h5>
+<h5>website: <a href="{{ dance_school.website }}/"></a></h5>
 
 <!-- <h5>website: <a href="https://www.{{ dance_school.website }}"></a></h5>   -->
-<h5>phone: {{ dance_school.phone }}</h5> 
+<h5>phone: {{ dance_school.phone }}</h5>
+
+<div>
+<section class="update"></section>
+<form action='/update_school/{{ dance_school.school_id }}'>
+    <input type="submit" value="Update innformation about the school">
+</form>
+
+</div>
 
 
 
-                <!-- !-- <script src="https://code.jquery.com/jquery-3.4.1.js"
-                    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</main>
 
-                <script src="static/homepage.js" charset="utf8"></script>  -->
-                {% endblock %}
+<script src="/static/dance_school.js" charset="utf8"></script>
+{% endblock %}
