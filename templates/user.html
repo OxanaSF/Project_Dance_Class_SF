@@ -13,7 +13,7 @@
 <ul>
     {% for rating in user.ratings %}
     <li>
-        <a href="/teachers/{{ rating.teacher_id }}">{{ rating.teacher.teacher_name }}</a>
+        <a href="/dance_teachers/{{ rating.teacher_id }}">{{ rating.teacher.teacher_name }}</a>
         was rated {{ rating.score }}
     </li>
     {% endfor %}

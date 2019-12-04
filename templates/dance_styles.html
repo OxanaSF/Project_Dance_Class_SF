@@ -1,27 +1,93 @@
 {% extends 'base.html' %}
 {% block title %}Dance Styles{% endblock %}
-<!-- 
+
 {% block head %}
 {{ super() }}
-<link rel="stylesheet" type="text/css" href="/static/dance_style.css">
-{% endblock %} -->
+<link rel="stylesheet" type="text/css" href="/static/css/dance_styles.css">
+{% endblock %}
+
 
 {% block content %}
-<h1>Dance Styles</h1>
 
-<ul>
-    {% for style in dance_styles %}
-        <li>
-            <a href="/dance_style/{{ style.dance_id }}">{{ style.name }}</a>
-        </li>
-    {% endfor %}
-</ul>
-
-
+<main class="whole-page">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>Dance Styles</h2>
+        <br>
+        <br>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
+        <div class="row">
 
-<!-- <script src="static/dance_style.js" charset="utf8"></script> -->
+                <div class="col-4">
+                </div>
+
+                <div class="col-4">
+
+                        <div class="search>">
+                                <h5>find your genre</h5>
+
+
+                                <select id="search-filter" class="search-filter" name="selected-item"
+                                        style="width: 40%">
+                                        {% for style in dance_styles %}
+                                        <option value="{{ style.dance_id }}">{{ style.name }}</option>
+                                        {% endfor %}
+
+
+                                        <input type="submit" class="dance_style_search" id="search-submit">
+                                </select>
+                        </div>
+                </div>
+        </div>
+
+        <div class="col-4">
+        </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <section class="gallery-block cards-gallery">
+                <div class="container-fluid p-0">
+
+
+                        <div class="row">
+                                {% for style in dance_styles %}
+                                <div class="col-3">
+                                        <div class="card border-0 transform-on-hover">
+                                                <h5><img width="250px" height="180px" id="style_photo"
+                                                                src="/static/{{ style.photo }}" alt="photo"
+                                                                class="card-img-top"> </h5>
+
+                                                <div class="card-body">
+                                                        <p class="text-muted card-text"><a class="lightbox"
+                                                                        href="/dance_style/{{ style.dance_id }}">{{ style.name }}</a>
+                                                        </p>
+                                                </div>
+                                        </div>
+                                </div>
+                                {% endfor %}
+                        </div>
+
+                </div>
+        </section>
+
+
+
+
+
+
+
+</main>
+<script src="/static/js/dance_styles.js"></script>
 {% endblock %}

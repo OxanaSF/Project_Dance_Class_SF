@@ -122,6 +122,7 @@ class DanceStyle(db.Model):
 
     
     name = db.Column(db.String(200))
+    photo = db.Column(db.String(500), nullable=True) 
 
     dancestyle = db.relationship('Class',
                                   backref='dancestyles')
@@ -236,8 +237,8 @@ class Teacher(db.Model):
     teacher_id = db.Column(db.Integer,
                        autoincrement=True,
                        primary_key=True)
-    teacher_name = db.Column(db.String(50), nullable=False)
-    bio = db.Column(db.String(500), nullable=True)
+    teacher_name = db.Column(db.String(5000), nullable=False)
+    bio = db.Column(db.String(5000), nullable=True)
     photo = db.Column(db.String(500), nullable=True) 
 
     classes = db.relationship('Class',

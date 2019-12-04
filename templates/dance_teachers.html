@@ -1,27 +1,157 @@
 {% extends 'base.html' %}
 {% block title %}Dance Teachers{% endblock %}
-<!-- 
+
 {% block head %}
 {{ super() }}
-<link rel="stylesheet" type="text/css" href="/static/dance_style.css">
-{% endblock %} -->
+
+
+<link rel="stylesheet" type="text/css" href="/static/css/dance_teachers.css">
+
+{% endblock %}
 
 {% block content %}
-<h1>Dance Teachers</h1>
-
-<ul>
-    {% for teacher in dance_teachers %}
-        <li>
-            <a href="/dance_teachers/{{ teacher.teacher_id }}">{{ teacher.teacher_name }}</a>
-        </li>
-    {% endfor %}
-</ul>
 
 
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
 
-<!-- <script src="static/dance_style.js" charset="utf8"></script> -->
-{% endblock %}
+<!-- Model form Add Teacher-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="modal fade" id="modal_add_form">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Add Teacher</h3>
+            </div>
+            <div class="modal-body">
+
+
+              <div>
+                <form action="/add_teacher" enctype="multipart/form-data" method="POST" class="wellspaced">
+
+                  <div class="form-group">
+                    <label>
+                      Teacher's Name:
+                      <input type="text" name="name" class="form-control">
+                    </label>
+                  </div>
+
+                  <div class="form-group">
+                    <label>
+                      Bio:
+                      <input type="text" name="bio" class="form-control">
+                    </label>
+                  </div>
+
+                  <div class="form-group">
+                    <label>
+                      Photo:
+                      <input type="file" name="photo" class="form-control">
+                    </label>
+                  </div>
+
+
+                  <div class="form-group">
+                    <input type="submit" value="Submit" class="submit_register" id="submit_teacher">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" data-dismiss="modal" value="close">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+  </div>
+  <!-- End of Model form Add Teacher-->
+
+
+
+
+
+  <main class="whole-page">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>Dance Teachers</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="two-col">
+      <div class="row">
+        <div class="col-4" id="left">
+
+
+          <a href="#add-teacher" data-toggle="modal" data-target="#modal_add_form"><button id="add_teacher"
+              type="button">add
+              teacher</button></a>
+        </div>
+
+
+
+
+
+        <div class="col-4" id="middle">
+          <ul>
+            {% for teacher in dance_teachers %}
+            <li>
+
+              <a href="/dance_teachers/{{ teacher.teacher_id }}">{{ teacher.teacher_name }}</a>
+
+            </li>
+            <br>
+            {% endfor %}
+          </ul>
+
+        </div>
+
+
+
+
+
+
+
+
+        <div class="col-4" id="right">
+          <div id="search-filter">
+            <h5>Search teacher by name</h5>
+
+            <select class="search-filter" name="selected-item" style="width: 50%">
+              {% for teacher in dance_teachers %}
+              <option value="{{ teacher.teacher_id }}">{{ teacher.teacher_name }}</option>
+              {% endfor %}
+            </select>
+
+            <input type="submit" class="dance_style_search" id="search-submit">
+          </div>
+
+        </div>
+
+
+      </div>
+  </main>
+
+
+
+
+
+
+
+
+  <script src="static/js/dance_teachers.js" charset="utf8"></script>
+  {% endblock %}

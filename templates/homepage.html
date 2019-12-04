@@ -4,17 +4,16 @@
 {% block head %}
 {{ super() }}
 
-<link rel="stylesheet" type="text/css" href="/static/style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 
 <style>
-    body {
-        margin: 0 auto;
-        padding: 0;
-        background-image: url("/static/san_francisco2.png");
-        background-size: cover;
-        background-attachment: fixed;
-
-    }
+  body {
+    margin: 40px;
+    padding: 0;
+    background-image: url("/static/images/dance1.png");
+    background-size: cover;
+    background-attachment: fixed
+  }
 </style>
 {% endblock %}
 
@@ -22,96 +21,142 @@
 
 {% block content %}
 
-<h4>{{ today }}</h4>    
-<nav>
+<header>
+
+  <nav>
     <section class="class" nav-container>
-        <aside class="menu">
-            <div class="menu-content">
-                <a href="/login" id="login">Login</a> | <a href="/register" id="register">Register</a>
-            </div>
-            <div class="arrow-up"></div>
-
-        </aside>
-
-
-
-        <div class="login-form">
-
-            <form action="/loggedin" method="POST">
-          
-                <div>
-                    <label>email</label>
-                    <input type="text" placeholder="email" name='email' required />
-                </div>
-                <div>
-                    <label>password</label>
-                    <input type="password" placeholder="password" name='password' required />
-                </div>
-                <div>
-                    <input type="submit" value="log in" />
-                </div>
-                <!-- <div>
-                <label>Remember Me</label>
-                <input type="checkbox" name="remember_me" class="form-control">
-            </div> -->
-                <div>
-                    <a href="#" style="text-decoration: none; position: relative; top: 15px"></a>forgot your
-                    password?</a>
-                </div>
-            </form>
+      <aside class="menu">
+        <div class="menu-content">
+          <a href="/login" id="login">Login</a> | <a href="/register" id="register">Register</a>
         </div>
+        <div class="arrow-up"></div>
+
+      </aside>
+
+
+
+      <div class="login-form">
+
+
+        <form action="/loggedin" method="POST">
+
+          <div>
+            <label id="email">email</label>
+            <input type="text" placeholder="email" name='email' required />
+          </div>
+          <div>
+            <label id="password">password</label>
+            <input type="password" placeholder="password" name='password' required />
+          </div>
+          <div>
+            <input id="submit-log" type="submit" value="log in" />
+          </div>
+
+          <div>
+            <!-- <a href="#" style="text-decoration: none; position: relative; top: 15px"></a>forgot your
+                    password?</a> -->
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <div class="register-form-right">
+          <form action="/register" method="POST" class="wellspaced">
+
+            <div class="form-group">
+              <label id="name">
+                Name:
+                <input type="text" name="name" class="form-control">
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label id="email">
+                Email:
+                <input type="email" name="email" class="form-control">
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label id="password">
+                Password:
+                <input type="password" name="password" class="form-control">
+              </label>
+            </div>
+            <div class="form-group">
+              <label id="birthday">
+                Birthday:
+                <input type="date" name="birthday" class="form-control">
+              </label>
+            </div>
+
+            <div class="form-group">
+              <input id="submit-reg" type="submit" value="Register" class="submit_register" id="submit_reg_form">
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+
+
+
+
+
+
     </section>
 
-</nav>
+  </nav>
 
 
-<div class="header" id="header">
+
+
+
+
+
+
+
+  <div class="header" id="header">
     <form>
-        <h1 id="find_dance">
-            Find Your
+      <h1 id="find_dance">
+        <span style='font-weight: bold' style='color: blue'> Adult D</span>
+        <span style='font-weight: bold' style='color: red'>A</span>
+        <span style='font-weight: bold' style='color: yellow'>N</span>
+        <span style='font-weight: bold' style='color: blue'>C</span>
+        <span style='font-weight: bold' style='color: green'>E</span>
 
-            <span style='color: blue'>D</span>
-            <span style='color: red'>A</span>
-            <span style='color: yellow'>N</span>
-            <span style='color: blue'>C</span>
-            <span style='color: green'>E</span>
-
-            Class<br> in San Francisco
-        </h1>
-
-        <!-- <div class="form-box" id="form-box">
-            <input type="text" class="search-field dance_style" id="search-field dance_style" placeholder="Dance Style"> -->
-
-
-        <form action="/search" method="GET">
-            <div class="form-box" id="form-box">
-                    <label>Select dance style or school</label>
-                <select class="option_btw_style_school" name="dance_style">
-                    <option value="">select below</option>
-                    <option value="Dance style">Dance Style</option>
-                    <option value="Dance school">Dance School</option>
-                    <option value="Dance teacher">Dance Teacher</option>
-                </select>
-
-                <button type="button" class="search-btn" id="search-btn">Search</button>
-            </div>
-
-        </form>
-        <!-- 
-            <input type="text" class="search-field zip_code"
-            placeholder="Zip Code"> 
-            -->
+        Classes<br> in<span class="green-word" style='font-weight: bold'> San Francisco</span>
+      </h1>
 
 
 
 
+      <form action="/search" method="GET">
+        <div class="form-box" id="form-box">
+          <select class="option_btw_style_school" name="dance_style">
+            <option class="dance_styles_opt" value="Dance style">select here</option>
+            <option value="Dance styles">dance styles</option>
+            <option value="Dance schools">dance schools</option>
+            <option value="Dance teachers">dance teachers</option>
+          </select>
+
+          <button type="button" class="search-btn" id="search-btn">Search</button>
+        </div>
+
+      </form>
 
 
 
+</header>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<main>
 
-        <script src="static/homepage.js" charset="utf8"></script>
 
-        {% endblock %}
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script src="/static/js/dance_styles.js"></script>
+  <script src="static/js/homepage.js" charset="utf8"></script>
+
+
+  {% endblock %}

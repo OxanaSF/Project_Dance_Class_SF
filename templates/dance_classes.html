@@ -4,17 +4,19 @@
 {% block head %}
 {{ super() }}
 <style>
-   #map{
-       height: 400px;
-       width: 100%;
-   } 
+    #map {
+        height: 400px;
+        width: 100%;
+    }
 </style>
 
-<!-- <link rel="stylesheet" type="text/css" href="/static/dance_style.css"> -->
+<link rel="stylesheet" type="text/css" href="/static/css/dance_schools.css">
 {% endblock %}
 
 {% block content %}
 <h1>Dance Classes</h1>
+
+
 
 <ul>
     {% for class in dance_classes %}
@@ -25,23 +27,23 @@
 </ul>
 <h1>Google Map</h1>
 <main>
-        <section class="map">
-          <div id="map"></div>
-        </section>
+    <section class="map">
+        <div id="map"></div>
+    </section>
 </main>
 
 
 <script>
-        function initMap(){
-            const options = {
-                zoom: 10,
-                center: {lat: 37.601773, lng: -122.202870}
-            }
-            const map = new google.maps.Map(document.getElementById('map'), options);
+    function initMap() {
+        const options = {
+            zoom: 10,
+            center: { lat: 37.601773, lng: -122.202870 }
         }
-    
-    
-    </script>
+        const map = new google.maps.Map(document.getElementById('map'), options);
+    }
+
+
+</script>
 
 
 

@@ -4,60 +4,80 @@
 {% block head %}
 {{ super() }}
 
-<link rel="stylesheet" type="text/css" href="/static/teacher.css">
+<link rel="stylesheet" type="text/css" href="/static/css/teacher.css">
 
 {% endblock %}
 
-
-
-
 {% block content %}
 
-<h5>Dance teacher: {{ teacher.teacher_name }}</h5>
-<h5> <img id="teacher_photo" src="/static{{ teacher.photo }}" alt="photo"> </h5>
-<h5> about: {{ teacher.bio }}</h5>
-</br>
-<h5> Classes {{ teacher.teacher_name }} teachers:</h5>
-</br>
-<div>
-    {% for class in dance_classes %}
-    <h5>class: {{ class.name }}</h5>
-    <h5>schedule: {{ class.schedule }}</h5>
-    <h5> at: <a href="/dance_school/{{ class.school_id }}">{{ class.school.name }}</a></h5>
-    </br>
-    {% endfor %}
-    <div>
+<main>
+  <h3>{{ teacher.teacher_name }}</h3>
+  <br>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-2">
+
+      </div>
+
+
+      <div class="col-8">
+
+        <h5><img id="teacher_photo" src="/static/images/teachers/{{ teacher.photo }}" alt="photo"> </h5>
+        <p> {{ teacher.bio }}</p>
+        </br>
+        <h5 class="classes_teaches"> Classes {{ teacher.teacher_name }} teachers:</h5>
+        </br>
+        <div>
+          {% for class in dance_classes %}
+          <h5>class: {{ class.name }}</h5>
+          <h5>schedule: {{ class.schedule }}</h5>
+          <h5> at: <a href="/dance_school/{{ class.school_id }}">{{ class.school.name }}</a></h5>
+          </br>
+          {% endfor %}
+          <div>
 
 
 
-{% if teacher.ratings %}
-<h5>All ratings {{ teacher.teacher_name }} received:</h5>
-<ul>
-        {% for rating in teacher.ratings %}
-          <li>
-            <!-- <a href="/users/{{ rating.user_id }}">{{ rating.user_id }}</a> -->
-            {{ rating.score }}
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
+            {% if teacher.ratings %}
+            <h5>All ratings {{ teacher.teacher_name }} received:</h5>
+            <ul>
+              {% for rating in teacher.ratings %}
+              <li>
+                <!-- <a href="/users/{{ rating.user_id }}">{{ rating.user_id }}</a> -->
+                {{ rating.score }}
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
 
 
-{% if "user_id" in session %}
+            {% if "user_id" in session %}
 
 
-{% if user_rating %}
-<h3>You gave the teacher {{ user_rating.score }}</h3>
-{% endif %}
+            {% if user_rating %}
+            <h3>You gave the teacher {{ user_rating.score }}</h3>
+            {% endif %}
 
 
-<form action="/dance_teachers/{{ teacher.teacher_id }}" method="POST">
-    <label>Rating:
-      <input type="number" name="score">
-    </label>
-    <input type="submit" value="Rate">
-  </form>
-{% endif %}
+            <form action="/dance_teachers/{{ teacher.teacher_id }}" method="POST">
+              <label>Rating:
+                <input type="number" name="score">
+              </label>
+              <input type="submit" value="Rate">
+            </form>
+            {% endif %}
+
+
+          </div>
+
+          <div class="col-2">
+
+          </div>
+        </div>
+
+
+      </div>
 
 
 
@@ -71,8 +91,23 @@
 
 
 
-        <script src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
-        <script src="static/homepage.js" charset="utf8"></script>
-  {% endblock %}
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+<script src="static/js/homepage.js" charset="utf8"></script>
+{% endblock %}

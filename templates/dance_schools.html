@@ -4,56 +4,184 @@
 {% block head %}
 {{ super() }}
 
-<style>
-    #map {
-        height: 400px;
-        width: 100%;
-    }
-</style>
-<!-- <link rel="stylesheet" type="text/css" href="/static/dance_style.css"> -->
+
+<link rel="stylesheet" type="text/css" href="/static/css/dance_schools.css">
 
 {% endblock %}
 
 {% block content %}
 
-<header>
-    <h1>Dance Schools of San Francisco</h1>
-</header>
 
-<main>
-    <section class="dance_school_list">
-        <ul>
+
+
+<!-- Model form Add School-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="modal fade" id="modal_add_form">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Add School</h3>
+            </div>
+            <div class="modal-body">
+
+
+              <div>
+                <form action="/add_school" method="POST" class="wellspaced">
+
+                  <div class="form-group">
+                    <label>
+                      School's Name:
+                      <input type="text" name="name" class="form-control">
+                    </label>
+                  </div>
+
+                  <div class="form-group">
+                    <label>
+                      Address:
+                      <input type="text" name="address" class="form-control">
+                    </label>
+                  </div>
+
+                  <div class="form-group">
+                    <label>
+                      Website:
+                      <input type="text" name="website" class="form-control">
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      San Francisco District:
+                      <input type="text" name="district" class="form-control">
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      Phone Number:
+                      <input type="tel" name="phone" class="form-control">
+                    </label>
+                  </div>
+
+
+
+                  <div class="form-group">
+                    <input type="submit" value="Submit" class="submit_register" id="submit_new_school">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" data-dismiss="modal" value="close">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+<!-- End of Model form Add School-->
+
+<div class="whole-page">
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <h2>Dance Schools</h2>
+  <br>
+
+
+
+  <div class="three-col">
+    <div class="row">
+      <div class="col-5" id="left">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div class="dance_school_list">
+          <ul>
+
             {% for school in dance_schools %}
             <li>
-                <a class="dance_school" href="/dance_school/{{ school.school_id }}" data-address="{{ school.address }}" data-name="{{ school.name }}">
-                    {{ school.name }}</br>
-                    {{ school.district }}
-                </a>
+
+              <div>
+                <div class="dance_school" data-address="{{ school.address }}" data-name="{{ school.name }}"></div>
+
+                <div class="dance_school">
+                  {{ school.name }}
+                </div>
+                <div class="area">
+                  {{ school.district }}
+                </div>
+
+              </div>
+
+              <button type="button" class="btn-sm btn-info" data-toggle="collapse" href="#school-{{ school.school_id }}"
+                data-target="#school-{{ school.school_id }}">view
+                details</button>
+              <div id="school-{{ school.school_id }}" class="collapse">
+                </br>
+                address: {{ school.address }} <br>
+                website: <a href="https://{{ school.website }}">{{ school.website }}</a>
+              </div>
+
+
             </li>
+            <br>
             {% endfor %}
-        </ul>
-    </section>
-    <section class="map">
-        <div id="map"></div>
-    </section>
+          </ul>
+          </section>
 
-    <section class="add_school"></section>
-    <h6>Want your school here?</h6>
-    <button type="button" id="add_school">Add School</button>
-   
+        </div>
+      </div>
 
-           
+      <div class="col-2" id="center">
 
-</main>
+        <a href="#add-school" data-toggle="modal" data-target="#modal_add_form"><button id="add_school"
+            type="button">add school</button></a>
+      </div>
 
 
+      <div class="col-5" id="right">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
-<script src="static/map.js" charset="utf8"></script>
+        <section class="map">
+          <div id="map"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+
+
+
+
+<!-- related to google map API -->
+<script src="/static/js/map.js" charset="utf8"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi7U3Bs7RTVtksiP6UEgzyFzXZIuohYEo&callback=initMap" async
-    defer></script>
+  defer></script>
 
-<script src="static/dance_schools.js" charset="utf8"></script>
-   
+<script src="/static/js/dance_schools.js" charset="utf8"></script>
+
 {% endblock %}
