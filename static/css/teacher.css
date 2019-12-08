@@ -1,0 +1,160 @@
+body{
+    padding: 40px;
+    background-image: url("/static/images/dance1.png");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 150px;
+}
+
+.col-8{
+    padding:50px;
+    
+    background:rgba(11, 61, 47, 0.7);
+    height: 600px;
+    overflow: scroll;
+    margin: 40px;
+    margin-left: 40px;
+    color: rgb(226, 200, 152);
+    border-radius: 20px;
+}
+
+
+h3{
+    font-size: 35px; 
+    font-weight: bold; 
+    color: rgb(233, 94, 48);
+    text-align: center;
+}
+
+
+#teacher_photo{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%; 
+}
+
+.classes_teaches{
+    font-size: 20px; 
+    /* font-weight: bold;  */
+    color: rgb(233, 94, 48);
+    /* color: rgb(24, 236, 137); */
+    text-align: center;
+    font-family: serif;
+}
+
+
+ul{
+    list-style-type: none;
+    margin: 10px;
+}
+
+p{
+    text-indent: 50px;
+}
+
+.class-schedule{
+    color: rgb(216, 199, 167)
+}
+
+#class-name,
+#schedule,
+#school{
+    /* color: greenyellow */
+    color:rgb(233, 94, 48);
+}
+
+#website{
+    color: rgb(235, 176, 75) 
+}
+
+#all-ratings{
+    
+    /* color: greenyellow */
+    color: rgb(233, 94, 48);
+}
+
+#received{
+    color: rgb(216, 199, 167)
+}
+
+
+
+nav{
+    margin: 20px;
+    width:  10%;
+    height: 65px;
+    position: relative;
+    /* background: whitesmoke; */
+    box-shadow: -1px 1px 60px 10px rgb(127, 127, 139);
+    float: right;
+    border-radius: 18px;
+}
+
+
+.nav-container{
+    width: 200px;
+    height: 65px;
+    justify-content: right;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -0.05em;
+    position: relative;
+}
+
+
+
+.menu{
+    width: 100%;
+    height: 65px;
+   
+}
+
+.menu>.menu-content{
+    width: 200px;
+    height: 65px;
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 65px;
+}
+
+.menu>.menu-content>a{
+    text-decoration: none;
+    
+}
+
+.dropdown-menu.show{
+    margin-right: 100px;
+    width: 50%;
+    position: relative;
+    display: inline-block;
+    font-size:10%;
+    background: rgba(124, 202, 189, 0.4); 
+    border-radius: 15px;
+    
+}
+
+.dropdown-item{
+    color: red;
+    size: 10px;
+    font-size: 20px;
+   
+}
+
+
+.class{
+    float: right;;
+}
+
+.nav-link.dropdown-toggle{
+    color:red;
+    size: 50px;
+    font-family: serif;
+
+}
+

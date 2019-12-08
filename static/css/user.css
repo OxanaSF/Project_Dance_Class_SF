@@ -1,0 +1,66 @@
+body{
+    padding: 40px;
+    background-image: url("/static/images/dance1.png");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 150px;
+}
+
+h5{
+    color: rgb(233, 94, 48);
+    text-align: center;
+    font-size: 25px
+}
+
+.col-6{
+    padding:50px;
+    background: rgba(11, 61, 47, 0.7);
+    height: 600px;
+    overflow: scroll;
+    margin: 40px;
+    margin-left: 0px;
+    text-align: center;
+    border-radius: 25px;
+   
+}
+
+#first-row{
+    margin: 40px;
+}
+
+#second-row{
+    color:rgb(219, 211, 196); 
+    font-family: serif;
+    font-size: 20px;
+   
+}
+
+
+#first-row{
+    margin-bottom: 70px;
+    font-size: 20px;
+}
+
+.would-uou-like,
+.dance-class,
+.dance-schools,
+.dance-teachers
+{
+    color: rgb(235, 176, 75) 
+}
+
+.dance-class,
+.dance-schools,
+.dance-teachers
+{
+    color:rgb(216, 199, 167)
+}
+
+#teacher-rated{
+    text-align: center;
+    color: rgb(24, 236, 137);
+}
+
+ul{
+    list-style-type: none;
+}

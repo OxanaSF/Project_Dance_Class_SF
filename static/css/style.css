@@ -1,0 +1,296 @@
+body{
+    margin: 0 auto;
+    padding: 0;
+    position: relative
+}
+
+nav{
+    width:  100%;
+    height: 65px;
+    position: relative;
+    /* background: whitesmoke; */
+    box-shadow: -1px 1px 60px 10px rgb(127, 127, 139);
+}
+
+
+.nav-container{
+    width: 200px;
+    height: 65px;
+    justify-content: right;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -0.05em;
+    position: relative;
+}
+
+.menu{
+    width: 100%;
+    height: 65px;
+    /* background: whitesmoke; */
+}
+
+.menu>.menu-content{
+    width: 200px;
+    height: 65px;
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-weight: bold; */
+    line-height: 65px;
+}
+
+.menu>.menu-content>a{
+    text-decoration: none;
+    
+}
+
+.arrow-up-left{
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #ffff;
+    right: 160px;
+    top: 47px;
+    display: none;
+}
+
+.arrow-up-right{
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #ffff;
+    right: 130px;
+    top: 47px;
+    display: none;
+}
+
+
+.login-form{
+    position: absolute;
+    width: 300px;
+    height: 200;
+    right: 0;
+    margin: 20px;
+    padding: 20x;
+    margin-top: 80px;
+    box-shadow: -1px 1px 60px 10px rgb(127, 127, 139);
+    background: rgba(0,0,0,0,4);
+    text-align: center;
+    top: -13px;
+    border-radius: 25px;
+    display: none;
+}
+
+
+.login-form>form{
+    width: 250;
+    margin: 35px;
+    /* color: blue; */
+    font-size: 12px;
+    font-family: sans-serif;
+    color: dimgrey
+}
+
+
+.register-form-right{
+    position: absolute;
+    width: 250px;
+    height: 200;
+    right: 0;
+    margin: 5px;
+    padding: 5x;
+    margin-top: 80px;
+    box-shadow: -1px 1px 60px 10px rgb(127, 127, 139);
+    background: rgba(0,0,0,0,4);
+    text-align: center;
+    top: -13px;
+    border-radius: 25px;
+    display: none;
+}
+
+.register-form-right>form{
+    width: 250;
+    margin: 15px;
+    font-size: 12px;
+    font-family: sans-serif;
+    color: dimgrey
+ 
+}
+
+
+
+
+
+input[type="text"],
+input[type="password"],
+input[type="name"],
+input[type="email"],
+input[type="date"]
+{
+    border-radius: 15px;
+    margin: 0px;
+    text-align: center;
+}
+
+input[type="submit"]{
+
+    border-radius: 25px;
+    font-weight: bold;
+    color: darkgrey
+
+}
+
+#header{
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;  
+    justify-content: center;
+    text-align: center;
+}
+
+.find_dance{
+    color: rgb(122, 35, 35);
+    margin-bottom: 250px;
+    font-size: 45px;
+    letter-spacing: 2px;
+    text-align: center;
+
+}
+
+
+   .option_btw_style_school{
+    height: 40px;
+    padding: 20px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 000px;
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    align-items: center;
+    background: rgb(80, 144, 173);
+    /* background: rgba(11, 61, 47, 0.7);; */
+    color: oldlace
+     
+} 
+
+
+
+.dance_style{
+   width: 200px; 
+}
+
+.zip_code{
+    width: 100px;
+}
+
+.search-btn{
+    height: 40px;
+    width: 100px;
+    padding: 0;
+    margin: auto;
+    background: rgb(80, 144, 173);
+    border: none;
+    color: oldlace;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+
+.form-box{
+    background: rgba(0,0,0,0.2);
+    padding: 60px;
+    border-radius: 25px;
+    align-items: center;
+    height: 150px;
+    width: 400px;
+    justify-content: center;
+    
+    
+}
+
+#sel1{
+    background: rgba(0,0,0,0.2);
+    padding: 60px;
+    margin: 10px;
+    border-radius: 25px;
+    align-items: center;
+    height: 40px;
+    width: 200px;
+
+}
+
+#find-your{
+    /* font-size: 25px;  */
+    /* font-weight: bold;  */
+    color: rgb(46, 24, 24);
+    text-align: center;
+
+}
+
+.green-word{
+    /* color: rgb(124, 30, 30); */
+    color: rgb(22, 65, 41);
+}
+
+#login{
+    color: oldlace
+}
+
+
+
+#email{
+    color: rgb(43, 24, 9);
+    font-size: 15px;
+}
+
+#password{
+    /* color: rgb(12, 36, 12); */
+    color:rgb(43, 24, 9);
+    font-size: 15px;
+}
+
+#submit-log{
+    color: rgb(31, 19, 19)
+}
+
+
+#register{
+    color: oldlace;
+   
+}
+
+#name{
+    color: rgb(43, 24, 9);
+    font-size: 15px;
+    text-align: center;;
+}
+
+#email{
+    color: rgb(43, 24, 9);
+    font-size: 15px;
+}
+
+#password{
+    color: rgb(43, 24, 9);
+    font-size: 15px;
+}
+
+#birthday{
+    color: rgb(43, 24, 9);
+    font-size: 15px;
+}
+
+#submit-reg{
+    color: rgb(31, 19, 19)
+}

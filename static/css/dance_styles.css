@@ -1,0 +1,169 @@
+
+.whole-page{
+    margin: 40px;
+    /* background: #baeaee; */
+    background-image: url("/static/images/dance1.png");
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+
+h2{
+    font-size: 35px; 
+    font-weight: bold; 
+    color: rgb(167, 236, 76);
+    text-align: center;
+}
+
+h5{
+    font-size: 
+    25px; font-weight: bold;
+    color: rgb(4, 35, 56);
+    margin: 20px;
+    text-align: center;
+}  
+
+.gallery-block{
+    padding-bottom: 60px; 
+    padding-top: 60px;
+    margin: 15px;
+}
+
+
+
+/* .gallery-block.cards-gallery .card{transition: 0.4s easy;} */
+.gallery-block.cards-gallery .card img{box-shadow: 0px 2px 10px rgba(0,0,0,0.15)}
+.gallery-block.cards-gallery .card-body{text-align: center;}
+.gallery-block.cards-gallery .card-body p{font-size: 18px; font-weight: bold; color: gray}
+.gallery-block.cards-gallery a{color:#212529}
+.gallery-block.cards-gallery a:hover{text-decoration: none;}
+.gallery-block.cards-gallery  .card{
+	margin-bottom: 30px;
+	box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
+}
+
+@media (min-width: 576px) {
+
+	.gallery-block .transform-on-hover:hover {
+	    transform: translateY(-10px) scale(1.02);
+	    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important; 
+	}
+}
+
+.search{
+    margin: 20px
+}
+
+
+
+#search-submit{
+
+    height: 40px;
+    width: 200px;
+    padding: 0;
+    margin: auto;
+    /* background-color: oldlace; */
+    border: none;
+    /* color: rgb(25, 73, 112); */
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    background: rgb(80, 144, 173);
+    color: oldlace;
+}
+
+
+#search-filter{
+    height: 40px;
+    width: 200px;
+    padding: 0;
+    margin: auto;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    background: rgb(80, 144, 173);
+    color: oldlace;
+    align: center;
+
+}
+
+
+
+nav{
+    margin: 20px;
+    width:  10%;
+    height: 65px;
+    position: relative;
+    /* background: whitesmoke; */
+    box-shadow: -1px 1px 60px 10px rgb(127, 127, 139);
+    float: right;
+    border-radius: 18px;
+}
+
+
+.nav-container{
+    width: 200px;
+    height: 65px;
+    justify-content: right;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -0.05em;
+    position: relative;
+}
+
+
+.menu{
+    width: 100%;
+    height: 65px;
+   
+}
+
+.menu>.menu-content{
+    width: 200px;
+    height: 65px;
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 65px;
+}
+
+.menu>.menu-content>a{
+    text-decoration: none;
+    
+}
+
+.dropdown-menu.show{
+    margin-right: 100px;
+    width: 50%;
+    position: relative;
+    display: inline-block;
+    font-size:10%;
+    background: rgba(124, 202, 189, 0.4); 
+    border-radius: 15px;
+    
+}
+
+.dropdown-item{
+    color: red;
+    size: 10px;
+    font-size: 20px;
+   
+}
+
+
+.class{
+    float: right;;
+}
+
+.nav-link.dropdown-toggle{
+    color:red;
+    size: 50px;
+    font-family: serif;
+
+}
+
+
+.lightbox{
+    color: red
+}
