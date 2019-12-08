@@ -5,17 +5,15 @@
 {{ super() }}
 
 
-<link rel="stylesheet" type="text/css" href="/static/css/dance_schools.css">
+<link rel="stylesheet" type="text/css" href="../static/css/dance_schools.css">
 
 {% endblock %}
 
 {% block content %}
 
-
-
-
 <!-- Model form Add School-->
 <div class="container">
+  
   <div class="row">
     <div class="col-md-12">
 
@@ -89,6 +87,22 @@
 <!-- End of Model form Add School-->
 
 <div class="whole-page">
+
+<nav>
+    <section class="class" nav-container>
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+  
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/">Home</a>
+        <a class="dropdown-item" href="/dance_styles">Dance Styles</a>
+        <a class="dropdown-item" href="/dance_teachers">Teachers</a>
+      </div>
+  
+    </section>
+  </nav>
+
   <br>
   <br>
   <br>
@@ -116,25 +130,25 @@
             {% for school in dance_schools %}
             <li>
 
-              <div>
-                <div class="dance_school" data-address="{{ school.address }}" data-name="{{ school.name }}"></div>
-
-                <div class="dance_school">
-                  {{ school.name }}
-                </div>
-                <div class="area">
-                  {{ school.district }}
-                </div>
-
-              </div>
+                <div>
+                    <div class="dance_school" data-address="{{ school.address }}" data-name="{{ school.name }}"></div>
+    
+                    <div class="dance_school">
+                        <a class="dance_school_name" href="/dance_school/{{ school.school_id }}">{{ school.name }}</a>
+                    </div>
+                    <div class="area">
+                      {{ school.district }}
+                    </div>
+    
+                  </div>
 
               <button type="button" class="btn-sm btn-info" data-toggle="collapse" href="#school-{{ school.school_id }}"
                 data-target="#school-{{ school.school_id }}">view
                 details</button>
               <div id="school-{{ school.school_id }}" class="collapse">
                 </br>
-                address: {{ school.address }} <br>
-                website: <a href="https://{{ school.website }}">{{ school.website }}</a>
+                address: <span class="address">{{ school.address }}</span><br>
+                website: <a class="website" href="https://{{ school.website }}">{{ school.website }}</a>
               </div>
 
 

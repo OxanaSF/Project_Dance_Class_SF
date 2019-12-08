@@ -15,136 +15,149 @@
 
 
 
-<!-- Model form Add Teacher-->
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
 
-      <div class="modal fade" id="modal_add_form">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3>Add Teacher</h3>
-            </div>
-            <div class="modal-body">
+<nav>
+  <section class="class" nav-container>
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
 
-
-              <div>
-                <form action="/add_teacher" enctype="multipart/form-data" method="POST" class="wellspaced">
-
-                  <div class="form-group">
-                    <label>
-                      Teacher's Name:
-                      <input type="text" name="name" class="form-control">
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <label>
-                      Bio:
-                      <input type="text" name="bio" class="form-control">
-                    </label>
-                  </div>
-
-                  <div class="form-group">
-                    <label>
-                      Photo:
-                      <input type="file" name="photo" class="form-control">
-                    </label>
-                  </div>
-
-
-                  <div class="form-group">
-                    <input type="submit" value="Submit" class="submit_register" id="submit_teacher">
-                  </div>
-
-                </form>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <input class="btn btn-primary" data-dismiss="modal" value="close">
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="/">Home</a>
+      <a class="dropdown-item" href="/dance_styles">Dance Styles</a>
+      <a class="dropdown-item" href="/dance_schools">Schools</a>
     </div>
 
-  </div>
-  <!-- End of Model form Add Teacher-->
+  </section>
+</nav>
 
+<!-- Model form Add Teacher-->
+<div class="row">
+  <div class="col-md-12">
 
-
-
-
-  <main class="whole-page">
-    <br>
-    <br>
-    <br>
-    <br>
-    <h2>Dance Teachers</h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div class="two-col">
-      <div class="row">
-        <div class="col-4" id="left">
-
-
-          <a href="#add-teacher" data-toggle="modal" data-target="#modal_add_form"><button id="add_teacher"
-              type="button">add
-              teacher</button></a>
-        </div>
-
-
-
-
-
-        <div class="col-4" id="middle">
-          <ul>
-            {% for teacher in dance_teachers %}
-            <li>
-
-              <a href="/dance_teachers/{{ teacher.teacher_id }}">{{ teacher.teacher_name }}</a>
-
-            </li>
-            <br>
-            {% endfor %}
-          </ul>
-
-        </div>
-
-
-
-
-
-
-
-
-        <div class="col-4" id="right">
-          <div id="search-filter">
-            <h5>Search teacher by name</h5>
-
-            <select class="search-filter" name="selected-item" style="width: 50%">
-              {% for teacher in dance_teachers %}
-              <option value="{{ teacher.teacher_id }}">{{ teacher.teacher_name }}</option>
-              {% endfor %}
-            </select>
-
-            <input type="submit" class="dance_style_search" id="search-submit">
+    <div class="modal fade" id="modal_add_form">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Add Teacher</h3>
           </div>
+          <div class="modal-body">
 
+
+            <div>
+              <form action="/add_teacher" enctype="multipart/form-data" method="POST" class="wellspaced">
+
+                <div class="form-group">
+                  <label>
+                    Teacher's Name:
+                    <input type="text" name="name" class="form-control">
+                  </label>
+                </div>
+
+                <div class="form-group">
+                  <label>
+                    Bio:
+                    <input type="text" name="bio" class="form-control">
+                  </label>
+                </div>
+
+                <div class="form-group">
+                  <label>
+                    Photo:
+                    <input type="file" name="photo" id="form-file" class="form-control">
+                  </label>
+                </div>
+
+
+                <div class="form-group">
+                  <input type="submit" value="Submit" class="submit_register" id="submit_teacher">
+                </div>
+
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input class="btn btn-primary" data-dismiss="modal" value="close">
+          </div>
         </div>
-
-
       </div>
-  </main>
+    </div>
+
+
+
+
+  </div>
+
+</div>
+<!-- End of Model form Add Teacher-->
+
+
+<main class="whole-page">
+  <br>
+  <br>
+  <br>
+  <br>
+  <h2>Dance Teachers</h2>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+      <div class="col-3" id="left">
+      </div>
+      <div class="col-6" id="top-middle">
+  
+        <a href="#add-teacher" data-toggle="modal" data-target="#modal_add_form"><button id="add_teacher"
+          type="button">add
+          teacher</button></a>
+  
+      </div>
+      <div class="col-3" id="right">
+        <div id="search-filter">
+        </div>
+      </div>
+    </div>
+
+
+
+
+  <div class="row">
+    <div class="col-3" id="left">
+    </div>
+    <div class="col-6" id="middle">
+
+      <br>
+      <br>
+      <br>
+      <select class="search-filter" name="selected-item">
+        {% for teacher in dance_teachers %}
+        <option value="{{ teacher.teacher_id }}">{{ teacher.teacher_name }}</option>
+        {% endfor %}
+      </select>
+      <ul>
+        {% for teacher in dance_teachers %}
+        <li>
+
+          <a href="/dance_teachers/{{ teacher.teacher_id }}">{{ teacher.teacher_name }}</a>
+
+        </li>
+        <br>
+        {% endfor %}
+      </ul>
+
+    </div>
+    <div class="col-3" id="right">
+      <div id="search-filter">
+      </div>
+    </div>
+  </div>
+
+
+
+
+</main>
 
 
 
@@ -153,5 +166,5 @@
 
 
 
-  <script src="static/js/dance_teachers.js" charset="utf8"></script>
-  {% endblock %}
+<script src="static/js/dance_teachers.js" charset="utf8"></script>
+{% endblock %}

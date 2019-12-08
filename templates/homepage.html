@@ -12,8 +12,9 @@
     padding: 0;
     background-image: url("/static/images/dance1.png");
     background-size: cover;
-    background-attachment: fixed
+    background-attachment: fixed;
   }
+ 
 </style>
 {% endblock %}
 
@@ -24,6 +25,7 @@
 <header>
 
   <nav>
+
     <section class="class" nav-container>
       <aside class="menu">
         <div class="menu-content">
@@ -42,7 +44,7 @@
 
           <div>
             <label id="email">email</label>
-            <input type="text" placeholder="email" name='email' required />
+            <input type="text"  placeholder="email" name='email' required />
           </div>
           <div>
             <label id="password">password</label>
@@ -66,27 +68,27 @@
             <div class="form-group">
               <label id="name">
                 Name:
-                <input type="text" name="name" class="form-control">
+                <input type="text" style="text-align: center" placeholder="name" name="name" class="form-control">
               </label>
             </div>
 
             <div class="form-group">
               <label id="email">
                 Email:
-                <input type="email" name="email" class="form-control">
+                <input type="email" placeholder="email" name="email" class="form-control">
               </label>
             </div>
 
             <div class="form-group">
               <label id="password">
                 Password:
-                <input type="password" name="password" class="form-control">
+                <input type="password" placeholder="password" name="password" class="form-control">
               </label>
             </div>
             <div class="form-group">
               <label id="birthday">
                 Birthday:
-                <input type="date" name="birthday" class="form-control">
+                <input type="date"  name="birthday" class="form-control">
               </label>
             </div>
 
@@ -131,7 +133,7 @@
 
 
 
-      <form action="/search" method="GET">
+      <form>
         <div class="form-box" id="form-box">
           <select class="option_btw_style_school" name="dance_style">
             <option class="dance_styles_opt" value="Dance style">select here</option>
@@ -140,7 +142,7 @@
             <option value="Dance teachers">dance teachers</option>
           </select>
 
-          <button type="button" class="search-btn" id="search-btn">Search</button>
+          <button type="button" class="search-btn" id="search-btn">search</button>
         </div>
 
       </form>

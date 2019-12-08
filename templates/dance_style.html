@@ -12,7 +12,23 @@
 
 
 {% block content %}
+<nav>
+    <section class="class" nav-container>
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+  
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/">Home</a>
+        <a class="dropdown-item" href="/dance_styles">Dance Styles</a>
+        <a class="dropdown-item" href="/dance_schools">Schools</a>
+        <a class="dropdown-item" href="/dance_teachers">Teachers</a>
+      </div>
+  
+    </section>
+  </nav>
 
+<div class="contaner">
 <div class="row">
     <div class="col-12">
 
@@ -41,7 +57,7 @@
             {% for class in dance_classes %}
 
             <tr>
-                <td><a href="/dance_class/{{ class.class_id }}">{{ class.name }}</a></td>
+                <td>{{ class.name }}</td>
                 <td>{{ class.schedule }}</td>
                 <td><a href="/dance_school/{{ class.school_id }}">{{ class.school.name }}</a></td>
                 <td><a href="/dance_teachers/{{ class.teacher_id }}">{{ class.teacher.teacher_name }}</a></td>
@@ -63,7 +79,7 @@
 </div>
 
 
-
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>

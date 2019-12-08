@@ -4,7 +4,7 @@
 {% block head %}
 {{ super() }}
 
-<link rel="stylesheet" type="text/css" href="/static/css/style_search.css">
+<link rel="stylesheet" type="text/css" href="/static/css/dance_school.css">
 
 
 {% endblock %}
@@ -12,27 +12,153 @@
 
 
 {% block content %}
+<!--Beginning Modal-->
+<div class="container">
+  
+  <div class="row">
+    <div class="col-md-12">
 
-<main>
-<h4>school: {{ dance_school.name }}</h4>
-</br>
-<h5>address: {{ dance_school.address }}</h5>
-<h5>website: <a href="https://{{ dance_school.website }}">{{dance_school.website }}</a></h5>
+      <div class="modal fade" id="modal_update_form">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Update School</h3>
+            </div>
+            <div class="modal-body">
 
-<!-- <h5>website: <a href="https://www.{{ dance_school.website }}"></a></h5>   -->
-<h5>phone: {{ dance_school.phone }}</h5>
 
-<div>
-<section class="update"></section>
-<form action='/update_school/{{ dance_school.school_id }}'>
-    <input type="submit" value="Update innformation about the school">
-</form>
+              <div>
+                <form action="/update_school/{{ school.school_id }}" method="POST" class="wellspaced">
+
+                  <div class="form-group">
+                    <label>
+                      School's Name:
+                      <input type="text" name="name" class="form-control" value="{{ school.name }}">
+                    </label>
+                  </div>
+
+                  <div class="form-group">
+                    <label>
+                      Address:
+                      <input type="text" name="address" class="form-control" value="{{ school.address }}">
+                    </label>
+                  </div>
+
+                  <div class="form-group">
+                    <label>
+                      Website:
+                      <input type="text" name="website" class="form-control" value="{{ school.website }}">
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      San Francisco District:
+                      <input type="text" name="district" class="form-control" value="{{ school.district }}">
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      Phone Number:
+                      <input type="tel" name="phone" class="form-control" value="{{ school.phone }}">
+                    </label>
+                  </div>
+
+
+
+                  <div class="form-group">
+                    <input type="submit" value="submit" class="submit_register" id="submit_updated_school">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" data-dismiss="modal" value="close">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
 
 </div>
 
+<!--End Modal-->
 
 
+
+
+
+<main>
+        <nav>
+                <section class="class" nav-container>
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+              
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/">Home</a>
+                    <a class="dropdown-item" href="/dance_styles">Dance Styles</a>
+                    <a class="dropdown-item" href="/dance_schools">Schools</a>
+                    <a class="dropdown-item" href="/dance_teachers">Teachers</a>
+                  </div>
+              
+                </section>
+              </nav>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+
+
+            <div class="col-8">
+
+                <h6>{{ school.name }}</h6>
+                </br>
+                </br>
+                </br>
+
+                <div data-address="{{ school.address }}"></div>
+
+
+                <h5><span id="address">address: </span>{{ school.address }}<h5>
+                        <h5><span id="address">website: </span> <a id="website"
+                                href="https://{{ school.website }}">{{ school.website }}</a></h5>
+                        <h5><span id="address">phone: </span> {{ school.phone }}</h5>
+
+                        <div>
+                            <section class="update"></section>
+                            <form>
+                                <input id="update-info-btn" type="button" value="Update school information">
+                            </form>
+
+                        </div>
+
+            </div>
+
+            <div class="col-2">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+            <div class="col-12">
+ 
+            </div>
+   
 </main>
+
+
+
+
+
 
 <script src="/static/js/dance_school.js" charset="utf8"></script>
 {% endblock %}

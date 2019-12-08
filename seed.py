@@ -18,7 +18,7 @@ def load_users():
                         birth_date=row[4])
 
             db.session.add(user)
-    db.session.commit()
+    # db.session.commit()
 
 
 # 2
@@ -36,7 +36,7 @@ def load_schools():
                                   district=row[4],
                                   phone=row[1])
             db.session.add(dance_school)
-    db.session.commit()
+    # db.session.commit()
 
 
 # 3
@@ -49,7 +49,7 @@ def load_dance_styles_photos():
                                name=row[2])
 
             db.session.add(style)
-    db.session.commit()
+    # db.session.commit()
 
 
 # 4
@@ -62,7 +62,7 @@ def load_teachers_from_the_pull():
             teacher = Teacher(photo=row[1], teacher_name=row[3], bio=row[4])
 
             db.session.add(teacher)
-    db.session.commit()
+    # db.session.commit()
 
 
 # 5
@@ -88,7 +88,7 @@ def load_classes_from_the_pull():
                                 schedule=row[4])
 
             db.session.add(dance_class)
-    db.session.commit()
+    # db.session.commit()
 
 
 

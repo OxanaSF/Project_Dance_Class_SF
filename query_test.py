@@ -4,8 +4,13 @@ from model import db, User, Bookmark, Rating, DanceStyle, Class, School, Teacher
 
 
 
-def dance_style_dance_school_dance_teacher():
-    """returns """
+# def dance_style_dance_school_dance_teacher():
+#     teachers = Teacher.query.all()
+#     list_of_teacher_name = []
+#     for teacher in teachers:
+#        list_of_teacher_name.append(teacher.teacher_name)
+#     n = sorted(list_of_teacher_name)
+#     return n
 
 
 def classes_school():

@@ -142,7 +142,7 @@ def show_school(school_id):
     # print(dance_school.classes)
     # print(dance_school.teachers)
 
-    return render_template('dance_school.html', dance_school=dance_school)
+    return render_template('dance_school.html', school=dance_school, sch_id=school_id)
 
 
 # route 11
@@ -197,6 +197,8 @@ def show_dance_teachers():
     """Shows dance teachers"""
 
     dance_teachers = Teacher.query.all()
+  
+   
 
     return render_template('dance_teachers.html',
                            dance_teachers=dance_teachers)
@@ -208,6 +210,7 @@ def show_teacher_info(teacher_id):
     """
 
     teacher = Teacher.query.get(teacher_id)
+    
 
     dance_classes = teacher.classes
 
@@ -252,6 +255,7 @@ def teacher_detail_process(teacher_id):
 @app.route('/add_school', methods=['GET'])
 def add__new_school():
     """Show form to a user to add a school"""
+    school = School.query.get(school_id)
 
     return render_template("add_school.html")
 
@@ -267,8 +271,10 @@ def add_school_process():
     district = request.form.get("district")
     phone = request.form.get("phone")
 
-    new_school = School(name=name,                                  address=address,
-                        website=website, district=district,
+    new_school = School(name=name,
+                        address=address,
+                        website=website, 
+                        district=district,
                         phone=phone)
 
     db.session.add(new_school)
@@ -279,13 +285,14 @@ def add_school_process():
     return redirect(f"/dance_school/{new_school.school_id}")
 
 
-# route 20
-@app.route('/update_school/<int:school_id>', methods=['GET'])
-def update_school(school_id):
-    """Show form for user to update a school"""
+# # route 20
+# @app.route('/update_school/<int:school_id>', methods=['GET'])
+# def update_school(school_id):
+#     """Show form for user to update a school"""
+#     school = School.query.get(school_id)
 
-    return render_template("update_school.html",
-                           sch_id=school_id)
+#     return render_template("update_school.html",
+#                            sch_id=school_id, school=school)
 
 
 # route 21
@@ -323,7 +330,7 @@ def update_school_process(school_id):
 
     db.session.commit()
 
-    return redirect(f"/dance_school/{school_id}")
+    return redirect(f"/dance_school/{school_id}", sch_id=school_id)
 
 # route 22
 @app.route('/add_teacher', methods=['GET'])

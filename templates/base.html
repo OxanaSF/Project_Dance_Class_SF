@@ -7,6 +7,11 @@
      font-weight: bold;
      color: red;
    } 
+   #logout{
+    color: red; 
+    /* background: rgba(124, 202, 189, 0.4); */
+    font-weight: bold;
+   }
 </style>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -65,7 +70,7 @@
 
       <div class="col-2">
         {% if "user_id" in session %}
-        <a href="/logout">Logout</a>
+        <a id ="logout" href="/logout">Logout</a>
  
         {% endif %}
 
